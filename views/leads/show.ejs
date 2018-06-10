@@ -22,7 +22,7 @@
             <div class="button-group pull-right">
                 <a class="btn btn-xs btn-warning" href="/lead/<%= leads._id %>/edit?_method=PUT" method="POST">Edit</a>
                 <form id="delete-form" action="/lead/<%= leads._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-xs btn-danger">Delete</button>
+                <button class="btn btn-xs btn-danger"leads>Delete</button>
             </div>
             <strong><p>Name: </strong><%=leads.firstName%> <%=leads.lastName%></p>
             <strong><p>Phone: </strong><%=leads.phone%></p>
@@ -31,7 +31,7 @@
             <p><%=leads.addressStreet%></p>
             <p><%=leads.addressCity%>, <%=leads.addressState%>, <%=leads.addressZip%></p>
         </div>
-    <div class="dropdown">
+    <div class="dropdown" value="<%=leads.type%>">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Type
     <span class="caret"></span>

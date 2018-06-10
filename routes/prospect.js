@@ -45,6 +45,7 @@ router.get("/new", function(res, res){
    res.render("prospect/new");
 });
 
+//SHOW - Show info about specific
 router.get("/:id", function(req, res){
     Prospect.findById(req.params.id).exec(function(err, foundProspect){
         if(err){
@@ -61,7 +62,7 @@ router.get("/:id/edit", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("prospect/edit", {prospects: foundProspect});
+            res.render("prospect/edit", {prospect: foundProspect});
         }
     });
 });

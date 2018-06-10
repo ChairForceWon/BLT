@@ -9,6 +9,7 @@ var leadSchema = new mongoose.Schema({
       addressZip: String,
       phone: String,
       email: String,
+      type: String,
    });
 
 module.exports = mongoose.model("Lead", leadSchema);
