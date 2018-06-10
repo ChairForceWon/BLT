@@ -1,0 +1,20 @@
+<!--Leads Page that shows all leads-->
+<% include ../partials/header %>
+    <h1>List of available Leads</h1>
+    <div class="col-md-1">
+        <a class="btn btn-primary" href="/lead/new">Add new lead</a>
+    </div>
+    <div class="jumbotron col-md-10">
+        <table class="table table-striped">
+            <% leads.forEach(function(leads){ %>
+                <div class="container">
+                    <tr>
+                        <td><strong><a href="/lead/<%= leads._id %>"><%=leads.firstName%> <%=leads.lastName%></a></strong></td>
+                    </tr>
+                </div>
+            <% }); %>
+        </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+<% include ../partials/footer %>

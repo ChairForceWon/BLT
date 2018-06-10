@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BLT</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+   <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">BLT</a>
+            </div>
+        <div>
+          <ul class="nav navbar-nav collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/lead">Leads</a></li>
+            <li><a href="/prospect">Prospects</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Pipeline</a></li>
+            <li><a href="#">Life/Financial</a></li>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-right"><a href="#">Signed in as Cory</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+            <% } %>
+    <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+            <% } %>
+    <% if(genInfo && genInfo.length > 0){ %>
+        <div class="alert alert-info" role="alert">
+          <%= genInfo %>
+        </div>
+            <% } %>
+</div>

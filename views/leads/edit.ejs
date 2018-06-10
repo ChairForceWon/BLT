@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+    <div cass="row">
+        <h1 style="text-align: center;">Edit Lead</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/lead/<%= lead._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[firstName]" value="<%=lead.firstName%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[lastName]" value="<%=lead.lastName%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[addressStreet]" value="<%=lead.addressStreet%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[addressCity]" value="<%=lead.addressCity%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[addressState]" value="<%=lead.addressState%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[addressZip]" value="<%=lead.addressZip%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[phone]" value="<%=lead.phone%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="lead[email]" value="<%=lead.email%>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/lead">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

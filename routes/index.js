@@ -1,0 +1,11 @@
+var express     = require("express");
+var router      = express.Router();
+var passport    = require("passport");
+var Lead        = require("../models/lead");
+
+
+router.get("/", function(req, res){
+    res.render("landing");
+})
+
+module.exports = router;

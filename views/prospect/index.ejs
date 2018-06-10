@@ -1,0 +1,20 @@
+<!--Leads Page that shows all prospects-->
+<% include ../partials/header %>
+    <h1>List of available Prospects</h1>
+    <div class="col-md-1">
+        <a class="btn btn-primary" href="/prospect/new">Add new prospect</a>
+    </div>
+    <div class="jumbotron col-md-10">
+        <table class="table table-striped">
+            <% prospects.forEach(function(prospects){ %>
+                <div class="container">
+                    <tr>
+                        <td><strong><a href="/prospect/<%=prospects._id%>"><%=prospects.firstName%> <%=prospects.lastName%></a></strong></td>
+                    </tr>
+                </div>
+            <% }); %>
+        </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+<% include ../partials/footer %>

@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+    <div cass="row">
+        <h1 style="text-align: center;">Edit Prospect</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/prospect/<%= prospects._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[firstName]" value="<%=prospects.firstName%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[lastName]" value="<%=prospects.lastName%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[addressStreet]" value="<%=prospects.addressStreet%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[addressCity]" value="<%=prospects.addressCity%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[addressState]" value="<%=prospects.addressState%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[addressZip]" value="<%=prospects.addressZip%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[phone]" value="<%=prospects.phone%>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name ="prospects[email]" value="<%=prospects.email%>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/prospect">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

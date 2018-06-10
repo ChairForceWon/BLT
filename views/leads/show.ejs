@@ -1,0 +1,46 @@
+<!--Show Page for individual Leads-->
+<% include ../partials/header %>
+
+    <div class="panel panel-default col-lg-3">
+        <div class="panel-heading">
+            <h1 class="panel-title">Activity</h1>
+        </div>
+        <div class="panel-body">
+            <strong><p>Source:</strong> Rockford Home Show</p>
+            <strong><p>Assigned to:</strong> Cory E.</p>
+            <strong><p>Last Activity:</strong> Attempted Phone Call</p>
+            <strong><p>Next Follow Up:</strong> June 6th, 2018 @ 3pm</p>
+            <strong><p>Follow Up Details:</strong> Quote Appointment</p>
+        </div>
+    </div>
+    
+    <div class="panel panel-info col-lg-6">
+        <div class="panel-heading">
+            <h1 class="panel-title">Customer Information</h1>
+        </div>
+        <div class="panel-body">
+            <div class="button-group pull-right">
+                <a class="btn btn-xs btn-warning" href="/lead/<%= leads._id %>/edit?_method=PUT" method="POST">Edit</a>
+                <form id="delete-form" action="/lead/<%= leads._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-xs btn-danger">Delete</button>
+            </div>
+            <strong><p>Name: </strong><%=leads.firstName%> <%=leads.lastName%></p>
+            <strong><p>Phone: </strong><%=leads.phone%></p>
+            <strong><p>Email: </strong><%=leads.email%></p>
+            <strong><p>Address: </strong></p> 
+            <p><%=leads.addressStreet%></p>
+            <p><%=leads.addressCity%>, <%=leads.addressState%>, <%=leads.addressZip%></p>
+        </div>
+    </div>
+    
+    <div class="panel panel-default col-lg-3">
+        <div class="panel-heading">
+            <h1 class="panel-title">Customer Information</h1>
+        </div>
+        <div class="panel-body">
+            <p>Referral Fee Section Goes Here</p>
+        </div>
+    </div>
+
+<% include ../partials/footer %>
+
