@@ -31,19 +31,12 @@
             <p><%=leads.addressStreet%></p>
             <p><%=leads.addressCity%>, <%=leads.addressState%>, <%=leads.addressZip%></p>
         </div>
-    <div class="dropdown" value="<%=leads.type%>">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Type
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="lead">Lead</a></li>
-    <li><a href="prospect">Prospect</a></li>
+        <div class="col-lg-2">
+            <strong><p>Status: </strong><%=leads.leadStatus%></p>
+        </div>
     
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div></div>
+    </div>
+
     
     
     <div class="panel panel-default col-lg-3">

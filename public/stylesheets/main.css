@@ -36,3 +36,7 @@ h1{
 .panel{
     margin-right:10px;
 }
+
+#delete-form {
+    display: inline;
+}
