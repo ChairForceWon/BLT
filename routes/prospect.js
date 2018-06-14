@@ -26,7 +26,8 @@ router.post("/", function(req, res){
     var addressZip = req.body.addressZip;
     var phone = req.body.phone;
     var email = req.body.email;
-    var newProspect = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email}
+    var prospectStatus = req.body.prospectStatus;
+    var newProspect = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, prospectStatus: prospectStatus}
     //Create a new campground and save to DB
     Prospect.create(newProspect, function(err, newlyCreated){
         if(err) {
@@ -45,6 +46,7 @@ router.get("/new", function(res, res){
    res.render("prospect/new");
 });
 
+//SHOW - Show info about specific
 router.get("/:id", function(req, res){
     Prospect.findById(req.params.id).exec(function(err, foundProspect){
         if(err){
@@ -61,7 +63,7 @@ router.get("/:id/edit", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("prospect/edit", {prospects: foundProspect});
+            res.render("prospect/edit", {prospect: foundProspect});
         }
     });
 });

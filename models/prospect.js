@@ -9,6 +9,7 @@ var prospectSchema = new mongoose.Schema({
       addressZip: String,
       phone: String,
       email: String,
+      prospectStatus: String,
    });
 
 module.exports = mongoose.model("Prospect", prospectSchema);

@@ -1,4 +1,4 @@
-<!--Show Page for individual Prospects-->
+<!--Show Page for individual prospects-->
 <% include ../partials/header %>
 
     <div class="panel panel-default col-lg-3">
@@ -22,7 +22,7 @@
             <div class="button-group pull-right">
                 <a class="btn btn-xs btn-warning" href="/prospect/<%= prospects._id %>/edit?_method=PUT" method="POST">Edit</a>
                 <form id="delete-form" action="/prospect/<%= prospects._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-xs btn-danger">Delete</button>
+                <button class="btn btn-xs btn-danger"prospects>Delete</button>
             </div>
             <strong><p>Name: </strong><%=prospects.firstName%> <%=prospects.lastName%></p>
             <strong><p>Phone: </strong><%=prospects.phone%></p>
@@ -31,6 +31,7 @@
             <p><%=prospects.addressStreet%></p>
             <p><%=prospects.addressCity%>, <%=prospects.addressState%>, <%=prospects.addressZip%></p>
         </div>
+<<<<<<< HEAD
     <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Type
@@ -43,6 +44,16 @@
     </ul>
     </div>
 </div>
+=======
+        <div class="col-lg-2">
+            <strong><p>Status: </strong><%=prospects.prospectStatus%></p>
+        </div>
+    
+    </div>
+
+    
+    
+>>>>>>> d4b5adc1202222fa9ca29695f96a63d37a119bd8
     <div class="panel panel-default col-lg-3">
         <div class="panel-heading">
             <h1 class="panel-title">Customer Information</h1>

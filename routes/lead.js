@@ -26,7 +26,8 @@ router.post("/", function(req, res){
     var addressZip = req.body.addressZip;
     var phone = req.body.phone;
     var email = req.body.email;
-    var newLead = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email}
+    var leadStatus = req.body.leadStatus;
+    var newLead = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, leadStatus: leadStatus}
     //Create a new campground and save to DB
     Lead.create(newLead, function(err, newlyCreated){
         if(err) {

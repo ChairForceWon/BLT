@@ -37,6 +37,7 @@ h1{
     margin-right:10px;
 }
 
+<<<<<<< HEAD
 #month{
     text-align: center;
     background-color:blue;
@@ -65,4 +66,8 @@ h1{
     padding: 25px;
     box-sizing:border-box;
     
+=======
+#delete-form {
+    display: inline;
+>>>>>>> d4b5adc1202222fa9ca29695f96a63d37a119bd8
 }
