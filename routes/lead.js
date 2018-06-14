@@ -28,7 +28,7 @@ router.post("/", function(req, res){
     var email = req.body.email;
     var leadStatus = req.body.leadStatus;
     var newLead = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, leadStatus: leadStatus}
-    //Create a new campground and save to DB
+    //Create a new Lead and save to DB
     Lead.create(newLead, function(err, newlyCreated){
         if(err) {
             req.flash("error", "Something went wrong");
