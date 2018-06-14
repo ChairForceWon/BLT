@@ -17,7 +17,7 @@ body{
 }
 .jumbotron{
     margin-left:25px;
-    background: url(https://livinglikekings.files.wordpress.com/2008/11/allstate-hands.gif);
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsJfrFLrElQmHum153Zyikyg0pVwWYcPDvWkNPOdMYdf2bMIYC);
     background-position:center;
     background-repeat:no-repeat;
     height: 100%;
@@ -37,6 +37,37 @@ h1{
     margin-right:10px;
 }
 
+<<<<<<< HEAD
+#month{
+    text-align: center;
+    background-color:blue;
+    color:white;
+    padding:25px;
+    border:solid white 5px;
+    font-size: 16px;
+    line-height:1.42857143;
+    font-family: "Open Sans", sans-serif;
+    box-sizing:border-box;
+}
+#trending{
+    text-align:center;
+    background-color: red;
+    color: white;
+    line-height: 1.42857143;
+    box-sizing: border-box;
+    padding-top:30px;
+    padding:25px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+#dailygoals{
+    font-family: "Open Sans", sans-serif;
+    font-size:16px;
+    padding: 25px;
+    box-sizing:border-box;
+    
+=======
 #delete-form {
     display: inline;
+>>>>>>> d4b5adc1202222fa9ca29695f96a63d37a119bd8
 }
