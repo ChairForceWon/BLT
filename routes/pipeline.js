@@ -1,4 +1,4 @@
-/*Route file for leads*/
+/*Route file for pipeline page*/
 var express = require("express");
 var router = express.Router();
 var contact = require("../models/contact");
@@ -10,7 +10,7 @@ router.get("/", function(req, res){
        if(err){
            console.log(err);
        } else {
-           res.render("lead/index",{contacts: allcontacts});
+           res.render("pipeline/index",{contacts: allcontacts});
        }
    });
 });

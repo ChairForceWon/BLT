@@ -1,7 +1,7 @@
 var express     = require("express");
 var router      = express.Router();
 var passport    = require("passport");
-var Lead        = require("../models/lead");
+var Contact        = require("../models/contact");
 
 
 router.get("/", function(req, res){

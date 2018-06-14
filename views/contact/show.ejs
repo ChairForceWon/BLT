@@ -1,4 +1,4 @@
-<!--Show Page for individual Leads-->
+<!--Show Page for individual contacts-->
 <% include ../partials/header %>
 
     <div class="panel panel-default col-lg-3">
@@ -14,32 +14,32 @@
         </div>
     </div>
     
-    <div class="panel panel-info col-lg-5">
+    <div class="panel panel-info col-lg-6">
         <div class="panel-heading">
             <h1 class="panel-title">Customer Information</h1>
         </div>
         <div class="panel-body">
             <div class="button-group pull-right">
-                <a class="btn btn-xs btn-warning" href="/lead/<%= leads._id %>/edit?_method=PUT" method="POST">Edit</a>
-                <form id="delete-form" action="/lead/<%= leads._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-xs btn-danger"leads>Delete</button>
+                <a class="btn btn-xs btn-warning" href="/contact/<%= contacts._id %>/edit?_method=PUT" method="POST">Edit</a>
+                <form id="delete-form" action="/contact/<%= contacts._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-xs btn-danger"contacts>Delete</button>
             </div>
-            <strong><p>Name: </strong><%=leads.firstName%> <%=leads.lastName%></p>
-            <strong><p>Phone: </strong><%=leads.phone%></p>
-            <strong><p>Email: </strong><%=leads.email%></p>
+            <strong><p>Name: </strong><%=contacts.firstName%> <%=contacts.lastName%></p>
+            <strong><p>Phone: </strong><%=contacts.phone%></p>
+            <strong><p>Email: </strong><%=contacts.email%></p>
             <strong><p>Address: </strong></p> 
-            <p><%=leads.addressStreet%></p>
-            <p><%=leads.addressCity%>, <%=leads.addressState%>, <%=leads.addressZip%></p>
+            <p><%=contacts.addressStreet%></p>
+            <p><%=contacts.addressCity%>, <%=contacts.addressState%>, <%=contacts.addressZip%></p>
         </div>
         <div class="col-lg-2">
-            <strong><p>Status: </strong><%=leads.leadStatus%></p>
+            <strong><p>Type: </strong><%=contacts.contactType%></p>
         </div>
     
     </div>
 
     
     
-    <div class="panel panel-default col-lg-2">
+    <div class="panel panel-default col-lg-3">
         <div class="panel-heading">
             <h1 class="panel-title">Customer Information</h1>
         </div>

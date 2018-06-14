@@ -7,14 +7,14 @@ var express                 = require("express"),
     methodOverride          = require("method-override"),
     LocalStrategy           = require("passport-local"),
     passportLocalMongoose   = require("passport-local-mongoose"),
-    Lead                    = require("./models/lead"),
-    Prospect                = require("./models/prospect");
+    Contact                = require("./models/contact");
     
     
 //Requiring Routes
-var leadRoutes      = require("./routes/lead"),
-    indexRoutes     = require("./routes/index"),
-    prospectRoutes  = require("./routes/prospect");
+var indexRoutes     = require("./routes/index"),
+    contactRoutes  = require("./routes/contact"),
+    leadRoutes       =require("./routes/lead"),
+    pipelineRoutes  = require("./routes/pipeline");
     
 
     
@@ -47,8 +47,10 @@ app.get("/", function(req, res){
 });
 
 app.use(indexRoutes);
+app.use("/contact", contactRoutes);
 app.use("/lead", leadRoutes);
-app.use("/prospect", prospectRoutes);
+app.use("/pipeline", pipelineRoutes);
+
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
