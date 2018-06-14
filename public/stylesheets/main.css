@@ -84,3 +84,16 @@ h1{
 #sortable tr {
     width: 40%;
 }
+
+h2{
+    color:white;
+    padding-left:25px;
+}
+
+#leadPipeline{
+    border:5px dashed white;
+}
+
+#prospectPipeline{
+    border:5px dashed white;
+}
