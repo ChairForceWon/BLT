@@ -1,12 +1,10 @@
-.navbar-inverse{
+.navbar {
     background-color: #6699ff;
-    padding-right:25px;
+    height: 50%;
 }
-.navbar-inverse .navbar-nav>li>a{
-    color:white;
-}
-.navbar-inverse .navbar-brand{
-    color:white;
+.nav-link {
+    color: white;
+    font: bold;
 }
 .btn-primary{
     background-color:#6699ff;
@@ -24,7 +22,6 @@ body{
     background-size:cover;
 }
 h1{
-    color:white;
     padding-left:25px;
 }
 .thumbnails{
@@ -64,36 +61,21 @@ h1{
     padding: 25px;
     box-sizing: border-box;
 }
-
 #delete-form {
     display: inline;
 }
-#sortable { 
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0;
-}
-#sortable li {
-    margin: 0 3px 3px 3px; 
-    padding: 0.4em; 
-    padding-left: 1.5em; 
-    font-size: 1.4em; 
-    height: 18px; 
-      
-}
-#sortable tr {
-    width: 40%;
-}
-
-h2{
-    color:white;
-    padding-left:25px;
-}
-
 #leadPipeline{
-    border:5px dashed white;
+    background-color: white;
+    border: 5px solid #bababa;
 }
 
 #prospectPipeline{
-    border:5px dashed white;
+    background-color: white;
+    border: 5px solid #bababa;
+}
+
+.pipeline-btn {
+    margin: 2px;
+    width: 150px;
+    text-align: center;
 }
