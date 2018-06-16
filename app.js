@@ -7,14 +7,18 @@ var express                 = require("express"),
     methodOverride          = require("method-override"),
     LocalStrategy           = require("passport-local"),
     passportLocalMongoose   = require("passport-local-mongoose"),
-    Contact                = require("./models/contact");
+    User                    = require("./models/user"),
+    Contact                 = require("./models/contact"),
+    middleware              = require("./middleware"),
+    Comment                 = require("./models/comment");
     
     
 //Requiring Routes
 var indexRoutes     = require("./routes/index"),
     contactRoutes  = require("./routes/contact"),
     leadRoutes       =require("./routes/lead"),
-    pipelineRoutes  = require("./routes/pipeline");
+    pipelineRoutes  = require("./routes/pipeline"),
+    commentRoutes   =  require("./routes/comments");
     
 
     
@@ -31,8 +35,12 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
    res.locals.currentUser = req.user;
@@ -42,7 +50,7 @@ app.use(function(req, res, next){
    next();
 });
 
-app.get("/", function(req, res){
+app.get("/", middleware.isLoggedIn, function(req, res){
     res.render("landing");
 });
 
@@ -50,6 +58,7 @@ app.use(indexRoutes);
 app.use("/contact", contactRoutes);
 app.use("/lead", leadRoutes);
 app.use("/pipeline", pipelineRoutes);
+app.use("/contact/:id/comments", commentRoutes);
 
 
 

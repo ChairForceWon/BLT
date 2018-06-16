@@ -2,9 +2,10 @@
 var express = require("express");
 var router = express.Router();
 var contact = require("../models/contact");
+var middleware = require("../middleware");
 
 //INDEX - Show all contacts
-router.get("/", function(req, res){
+router.get("/", middleware.isLoggedIn, function(req, res){
    //get all contacts from database
    contact.find({}, function(err, allcontacts){
        if(err){
@@ -16,7 +17,7 @@ router.get("/", function(req, res){
 });
 
 //CREATE - add new contact to DB
-router.post("/", function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
     //get data from form and add to contact array
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
@@ -42,12 +43,12 @@ router.post("/", function(req, res){
 });
 
 //NEW - Show form to add new contact to DB 
-router.get("/new", function(res, res){
+router.get("/new", middleware.isLoggedIn, function(res, res){
    res.render("contact/new");
 });
 
 //SHOW - Show info about specific
-router.get("/:id", function(req, res){
+router.get("/:id", middleware.isLoggedIn, function(req, res){
     contact.findById(req.params.id).exec(function(err, foundcontact){
         if(err){
             console.log(err);
@@ -58,7 +59,7 @@ router.get("/:id", function(req, res){
 });
 
 //EDIT - Shows the form to edit a contact
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
     contact.findById(req.params.id, function(err, foundcontact){
         if(err){
             console.log(err);
@@ -69,7 +70,7 @@ router.get("/:id/edit", function(req, res){
 });
 
 //UPDATE - contact Route
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.isLoggedIn, function(req, res){
    contact.findByIdAndUpdate(req.params.id, req.body.contact, function(err, updatedPropect){
        if(err){
             req.flash("error", "Something went wrong");
@@ -81,7 +82,7 @@ router.put("/:id", function(req, res){
 });
 
 //DESTROY - contact Route
-router.delete("/:id", function(req, res){
+router.delete("/:id", middleware.isLoggedIn, function(req, res){
    contact.findByIdAndRemove(req.params.id, function(err){
        if(err){
             req.flash("error", "Something went wrong");

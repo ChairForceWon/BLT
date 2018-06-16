@@ -116,6 +116,9 @@
         <select class="form-control" name="contact[contactType]" value="<%=contact.contactType%>">
             <option <% if (contact.contactType == "Lead") { %> selected <% } %> value="Lead">Lead</option>
             <option <% if (contact.contactType == "Prospect") { %> selected <% } %> value="Prospect">Prospect</option>
+            <option <% if (contact.contactType == "Customer") { %> selected <% } %> value="Customer">Customer</option>
+            <option <% if (contact.contactType == "Custustomer-Cross Sell") { %> selected <% } %> value="Custustomer-Cross Sell">Custustomer-Cross Sell</option>
+            <option <% if (contact.contactType == "Customer - Winback") { %> selected <% } %> value="Customer - Winback">Customer - Winback</option>
         </select>
     </div>
             <a href="/contact/<%= contact._id %>">Go Back</a>

@@ -13,61 +13,7 @@
                                     <button type="button" class="btn btn-primary pipeline-btn" data-toggle="modal" data-target="#modal<%=contacts._id%>">
                                         <%=contacts.firstName%> <%=contacts.lastName%>
                                     </button>
-                                        <!-- Modal -->
-                                        <div class="ui basic modal" id="modal<%=contacts._id%>">
-                                          <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title"><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                  <span aria-hidden="true">&times;</span>
-                                                </button>
-                                              </div>
-                                              <div class="modal-body">
-                                                <p><strong>Phone:</strong> <%=contacts.phone%> <strong>Email:</strong> <%=contacts.email%></p>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Quoted</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Sold</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Requote</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Not Interested</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">No Answer</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Left Message</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Quote Scheduled</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                  <label class="form-check-label" for="defaultCheck1">Sale Scheduled</label>
-                                                </div>
-                                                  <div class="form-group">
-                                                    <label for="exampleFormControlTextarea1">Comments</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                  </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
+                                      <% include ../pipeline/modal %>
                                 </tr>
                             </div>
                             <% }; %>

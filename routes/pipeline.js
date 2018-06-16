@@ -2,9 +2,10 @@
 var express = require("express");
 var router = express.Router();
 var contact = require("../models/contact");
+var middleware  = require("../middleware");
 
 //INDEX - Show all contacts
-router.get("/", function(req, res){
+router.get("/", middleware.isLoggedIn, function(req, res){
    //get all contacts from database
    contact.find({}, function(err, allcontacts){
        if(err){
