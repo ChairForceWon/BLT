@@ -1,13 +1,13 @@
 /*Route file for leads*/
 var express = require("express");
 var router = express.Router();
-var contact = require("../models/contact");
+var Contact = require("../models/contact");
 var middleware = require("../middleware");
 
 //INDEX - Show all contacts
 router.get("/", middleware.isLoggedIn, function(req, res){
    //get all contacts from database
-   contact.find({}, function(err, allcontacts){
+   Contact.find({}, function(err, allcontacts){
        if(err){
            console.log(err);
        } else {
@@ -28,9 +28,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var phone = req.body.phone;
     var email = req.body.email;
     var contactType = req.body.contactType;
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType}
-    //Create a new campground and save to DB
-    contact.create(newcontact, function(err, newlyCreated){
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author}
+    //Create a new contact and save to DB
+    Contact.create(newcontact, function(err, newlyCreated){
         if(err) {
             req.flash("error", "Something went wrong");
             res.redirect("back");
@@ -47,20 +51,23 @@ router.get("/new", middleware.isLoggedIn, function(res, res){
    res.render("contact/new");
 });
 
-//SHOW - Show info about specific
-router.get("/:id", middleware.isLoggedIn, function(req, res){
-    contact.findById(req.params.id).exec(function(err, foundcontact){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("contact/show", {contacts: foundcontact});
-        }
-    });
+//SHOW - This will show info about the specific contact
+router.get("/:id", function(req, res){
+    //Find the contact with provided ID
+   Contact.findById(req.params.id).populate("comments").exec(function(err, foundContact){
+       if(err) {
+           console.log(err);
+       } else {
+           //render SHOW template with that contact
+           res.render("contact/show", {contacts: foundContact});
+       }
+   });
+    
 });
 
 //EDIT - Shows the form to edit a contact
 router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
-    contact.findById(req.params.id, function(err, foundcontact){
+    Contact.findById(req.params.id, function(err, foundcontact){
         if(err){
             console.log(err);
         } else {
@@ -71,7 +78,7 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
 
 //UPDATE - contact Route
 router.put("/:id", middleware.isLoggedIn, function(req, res){
-   contact.findByIdAndUpdate(req.params.id, req.body.contact, function(err, updatedPropect){
+   Contact.findByIdAndUpdate(req.params.id, req.body.contact, function(err, updatedPropect){
        if(err){
             req.flash("error", "Something went wrong");
             res.redirect("back");
@@ -83,7 +90,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
 
 //DESTROY - contact Route
 router.delete("/:id", middleware.isLoggedIn, function(req, res){
-   contact.findByIdAndRemove(req.params.id, function(err){
+   Contact.findByIdAndRemove(req.params.id, function(err){
        if(err){
             req.flash("error", "Something went wrong");
             res.redirect("/contact");           

@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var contactSchema = new mongoose.Schema({
+var contactSchema = new mongoose.Schema ({
       firstName: String,
       lastName: String,
       addressStreet: String,
@@ -10,6 +10,19 @@ var contactSchema = new mongoose.Schema({
       phone: String,
       email: String,
       contactType: String,
-   });
-
+   author: {
+      id: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "User"
+      },
+      username: String
+   },
+   comments: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Comment"
+      }
+   ]
+});
+ 
 module.exports = mongoose.model("Contact", contactSchema);

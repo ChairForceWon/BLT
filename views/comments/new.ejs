@@ -1,11 +1,12 @@
+<!--views/comments/new.ejs-->
 <% include ../partials/header %>
 <div class="container">
-    <div class="row">
-        <h1 style="text-align: center">Add New Comment to <%= contact.name %></h1>
+    <div cass="row">
+        <h1 style="text-align: center;">Add New Comment <%= contact.name %></h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/contact/<%= contacts._id %>/new" method="POST">
+            <form action="/contact/<%= contact._id %>/comments" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="comment[text]" placeholder="text">
+                    <input class="form-control" type="text" name ="comment[text]" placeholder="text">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>

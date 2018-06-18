@@ -55,10 +55,11 @@ app.get("/", middleware.isLoggedIn, function(req, res){
 });
 
 app.use(indexRoutes);
+app.use("/contact/:id/comments", commentRoutes);
 app.use("/contact", contactRoutes);
 app.use("/lead", leadRoutes);
 app.use("/pipeline", pipelineRoutes);
-app.use("/contact/:id/comments", commentRoutes);
+
 
 
 

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg">
                     <h1>Activity</h1> 
-                    <button type="button" class="btn btn-success work-contact" data-toggle="modal" data-target="#modal<%=contacts._id%>">Work Contact</button>
+                    <button type="button" class="btn btn-success work-contact" data-toggle="modal" data-target="#modal<%= contacts._id %>">Work Contact</button>
                     <hr>
                 </div>
             </div>
@@ -156,6 +156,7 @@
                     <p>Date Added:   <strong>9/1/2017</strong></p>
                     <p>First Quoted:   <strong>Unquoted</strong></p>
                     <p>Date Sold: <strong>Unsold</strong></p>
+                    
                 </div>
             </div>
         </div>
@@ -167,32 +168,35 @@
             <div class="row">
                 <div class="col-lg">
                     <h1>Comments</h1>
-                </div>
-            </div>
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="row">
-                        <h4>Add New Comment</h4>
+                    <div class="col-lg-8 offset-lg-2">
+                        <form action="/contact/<%= contacts._id %>/comments" method="POST">
+                            <div class="form-group">
+                                <textarea class="form-control" type="text" name ="comment[text]" placeholder="text"></textarea>
+                                <button class="btn btn-sm btn-primary">Submit!</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" type="textarea" name="comment[text]" placeholder="text" rows="3"></textarea>
+                    <div class="well"></div>
+                    <hr>
+                        <% contacts.comments.forEach(function(comment){ %>
+                            <div class="row">
+                                <div class="col-md-12">
+                                   <strong><%= comment.author.username %></strong>
+                            <p>
+                                <%= comment.text %>
+                            </p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <form id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                 <button class="btn btn-danger btn-sm" type="submit" value="Delete"><i class="fas fa-times"></i></button>
+                                </form>
+                            <% } %>
+                            </div>
                         </div>
-                        <div class="form-group">
-                    <form>
-                        <button class="btn btn-sm btn-primart">Save</button>
-                        <a href="/contact">Go Back</a>
-                        </div>
-                    </form>
+                    <% }) %>
+            </div>
                 </div>
             </div>
         </div>
-        <hr>
-        
-
-                
     </div>                    
 </div>
 
