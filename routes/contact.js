@@ -28,15 +28,17 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var phone = req.body.phone;
     var email = req.body.email;
     var contactType = req.body.contactType;
+    var created = req.body.created;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author}
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created}
     //Create a new contact and save to DB
-    Contact.create(newcontact, function(err, newlyCreated){
+    Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {
             req.flash("error", "Something went wrong");
+            console.log(err);
             res.redirect("back");
         } else {
             //redirect back to contact page
@@ -82,6 +84,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
        if(err){
             req.flash("error", "Something went wrong");
             res.redirect("back");
+             console.log(err);
        } else {
            res.redirect("/contact/" + req.params.id);
        }
@@ -93,7 +96,8 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
    Contact.findByIdAndRemove(req.params.id, function(err){
        if(err){
             req.flash("error", "Something went wrong");
-            res.redirect("/contact");           
+            res.redirect("/contact");   
+             console.log(err);
        } else {
            req.flash("error", "Contact Deleted");
            res.redirect("/contact")

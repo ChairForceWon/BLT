@@ -153,7 +153,7 @@
                     <p>Source:   <strong>Personal Contact</strong></p>
                     <p>Sub-Source:   <strong>Airsofting</strong></p>
                     <hr>
-                    <p>Date Added:   <strong>9/1/2017</strong></p>
+                    <p>Date Added:   <strong><%= contacts.created.toDateString() %></strong></p>
                     <p>First Quoted:   <strong>Unquoted</strong></p>
                     <p>Date Sold: <strong>Unsold</strong></p>
                     
@@ -164,7 +164,7 @@
     
 <!--Comments Container-->
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 comment-block cust-container">
+        <div class="col-lg-8 offset-lg-2 comment-block">
             <div class="row">
                 <div class="col-lg">
                     <h1>Comments</h1>
@@ -176,23 +176,22 @@
                             </div>
                         </form>
                     </div>
-                    <div class="well"></div>
-                    <hr>
                         <% contacts.comments.forEach(function(comment){ %>
-                            <div class="row">
-                                <div class="col-md-12">
-                                   <strong><%= comment.author.username %></strong>
-                            <p class="comment-container">
-                                <%= comment.text %> <%= comment.created %>
-                            </p>
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                            <form class="comment-container" id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                 <button class="btn btn-danger btn-sm" type="submit" value="Delete">x</i></button>
-                                </form>
-                                <hr>
-                            <% } %>
-                            </div>
-                        </div>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p><%= comment.text %></p>
+                                            <span><em><%= comment.created.toDateString() %> <%= comment.created.toLocaleTimeString("en-US") %> - <%= comment.author.username %></em></span>
+                                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                            <form id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                 <button class="btn btn-danger btn-sm" type="submit" value="Delete">x</i></button>
+                                                </form>
+                                            <% } %>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                            </table>
                     <% }) %>
             </div>
                 </div>
