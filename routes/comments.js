@@ -38,7 +38,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                   contact.comments.push(comment);
                   contact.save();
                   req.flash("genInfo", "Comment added");
-                  res.redirect("/contact/" + contact._id);
+                  res.redirect("back");
               }
           })
         }

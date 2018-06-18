@@ -182,13 +182,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                    <strong><%= comment.author.username %></strong>
-                            <p>
-                                <%= comment.text %>
+                            <p class="comment-container">
+                                <%= comment.text %> <%= comment.created %>
                             </p>
                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                            <form id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                 <button class="btn btn-danger btn-sm" type="submit" value="Delete"><i class="fas fa-times"></i></button>
+                            <form class="comment-container" id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                 <button class="btn btn-danger btn-sm" type="submit" value="Delete">x</i></button>
                                 </form>
+                                <hr>
                             <% } %>
                             </div>
                         </div>

@@ -107,4 +107,7 @@ h1 {
 .hr-black {
     border: 1px solid black;
 }
+.comment-container {
+    display: inline;
+}
 
