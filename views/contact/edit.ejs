@@ -1,21 +1,29 @@
 <% include ../partials/header %>
 
-    <div class="panel panel-default col-lg-3">
-        <div class="panel-heading">
-            <h1 class="panel-title">Activity</h1>
-        </div>
-        <div class="panel-body">
-            <strong><p>Source:</strong> Rockford Home Show</p>
-            <strong><p>Assigned to:</strong> Cory E.</p>
-            <strong><p>Last Activity:</strong> Attempted Phone Call</p>
-            <strong><p>Next Follow Up:</strong> June 6th, 2018 @ 3pm</p>
-            <strong><p>Follow Up Details:</strong> Quote Appointment</p>
-        </div>
-    </div>
-<div class="panel panel-info col-lg-6">
-        <div class="panel-heading">
-            <h1 class="panel-title">Customer Information</h1>
-        </div>
+    <div class = "container-fluid"> 
+        <div class = "row">
+             <div class="col-lg-2 activity-sidebar cust-container">
+                <div class="row">
+                 <div class="col-lg">
+                     <div class="panel-heading">
+                        <h1 class="panel-title">Activity</h1>
+                     </div>
+                    <div class="panel-body">
+                        <strong><p>Source:</strong> Rockford Home Show</p>
+                        <strong><p>Assigned to:</strong> Cory E.</p>
+                        <strong><p>Last Activity:</strong> Attempted Phone Call</p>
+                        <strong><p>Next Follow Up:</strong> June 6th, 2018 @ 3pm</p>
+                        <strong><p>Follow Up Details:</strong> Quote Appointment</p>
+                    </div>
+                 </div>
+                </div>
+             </div>
+    <div class="col-lg-6 customer-information cust-container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1>Customer Information</h1>
+                </div>
+            </div>
     <form action="/contact/<%= contact._id %>?_method=PUT" method="POST">
         <div class="panel-body">
             
@@ -127,14 +135,26 @@
         </div>
     </div>
 </div>
-<div class="panel panel-default col-lg-2">
-        <div class="panel-heading">
-            <h1 class="panel-title">Customer Information</h1>
+</div>
+<div class="col-lg-2 otherinfo-sidebar cust-container">
+    <div class="row">
+        <div class="col-lg">
+            <h1>Other Info</h1>
+            <hr>
+            <p>Assigned To: <strong>Cory Evans</strong></p>
+            <p>Source:   <strong>Personal Contact</strong></p>
+            <p>Sub-Source:   <strong>Airsofting</strong></p>
+            <hr>
+            <p>Date Added:   <strong></strong></p>
+            <p>First Quoted:   <strong>Unquoted</strong></p>
+            <p>Date Sold: <strong>Unsold</strong></p>
         </div>
         <div class="panel-body">
             <p>Referral Fee Section Goes Here</p>
         </div>
     </div>
+</div>
+</div>
     
 
 <% include ../partials/footer %>
