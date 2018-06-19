@@ -1,45 +1,89 @@
 <% include ../partials/header %>
 
     <div class = "container-fluid"> 
+    <form action="/contact/<%= contact._id %>?_method=PUT" method="POST">
         <div class = "row">
-             <div class="col-lg-2 activity-sidebar cust-container">
-                <div class="row">
-                 <div class="col-lg">
-                     <div class="panel-heading">
-                        <h1 class="panel-title">Activity</h1>
-                     </div>
-                    <div class="panel-body">
-                        <strong><p>Source:</strong> Rockford Home Show</p>
-                        <strong><p>Assigned to:</strong> Cory E.</p>
-                        <strong><p>Last Activity:</strong> Attempted Phone Call</p>
-                        <strong><p>Next Follow Up:</strong> June 6th, 2018 @ 3pm</p>
-                        <strong><p>Follow Up Details:</strong> Quote Appointment</p>
-                    </div>
-                 </div>
+<!--Activity Side Bar-->
+        <div class="col-lg-2 activity-sidebar cust-container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1>Activity</h1> 
+                    <hr>
                 </div>
-             </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <p> Type:   
+                </div>
+                <div class="col-lg-6 offset-lg-2">
+                    <select class="form-control" name="contacts[contactType]" value="<%=contact.contactType%>">
+                        <option <% if (contact.contactType == "Lead") { %> selected <% } %> value="Lead">Lead</option>
+                        <option <% if (contact.contactType == "Prospect") { %> selected <% } %> value="Prospect">Prospect</option>
+                        <option <% if (contact.contactType == "Customer") { %> selected <% } %> value="Customer">Customer</option>
+                        <option <% if (contact.contactType == "Custustomer-Cross Sell") { %> selected <% } %> value="Custustomer-Cross Sell">Custustomer-Cross Sell</option>
+                        <option <% if (contact.contactType == "Customer - Winback") { %> selected <% } %> value="Customer - Winback">Customer - Winback</option>
+                    </select>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <p> Status:   
+                </div>
+                <div class="col-lg-6 offset-lg-2">
+                        <select class="form-control" name="contacts[contactStatus]" value="<%=contact.contactStatus%>">
+                            <option <% if (contact.contactStatus == "New Lead") { %> selected <% } %> value="New Lead">New Lead</option>
+                            <option <% if (contact.contactStatus == "Attempted Quote") { %> selected <% } %> value="Attempted Quote">Attempted Quote</option>
+                            <option <% if (contact.contactStatus == "Quoted") { %> selected <% } %> value="Quoted">Quoted</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <p> Strength:   
+                </div>
+                <div class="col-lg-6 offset-lg-2">
+                    <select class="form-control" name="contacts[contactStrength]" value="<%=contact.contactStrength%>">
+                        <option <% if (contact.contactStrength == "Hot") { %> selected <% } %> value="Hot">Hot</option>
+                        <option <% if (contact.contactStrength == "Warm") { %> selected <% } %> value="Warm">Warm</option>
+                        <option <% if (contact.contactStrength == "Cold") { %> selected <% } %> value="Cold">Cold</option>
+                    </select>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p>Next Scheduled Task: </p> 
+                </div>
+                <div class="col-lg-8">
+                    <span><em>Follow Up, Phone Call 6/15/18@3:00pm</em></span>
+                    <p><em>-Cory Evans</em></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p>Last Activity: </p> 
+                </div>
+                <div class="col-lg-8">
+                    <span><em>Attempted Quote, Left Message 6/6/18@3:42pm</em></span>
+                    <p><em>-Cory Evans</em></p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <!--Customer Information Container-->
     <div class="col-lg-6 customer-information cust-container">
             <div class="row">
                 <div class="col-lg">
                     <h1>Customer Information</h1>
                 </div>
             </div>
-    <form action="/contact/<%= contact._id %>?_method=PUT" method="POST">
         <div class="panel-body">
             
-    <div class="col-lg-2">
-        <select class="form-control" name="contact[contactStrength]" value="<%=contact.contactStrength%>">
-            <option <% if (contact.contactStrength == "Hot") { %> selected <% } %> value="Hot">Hot</option>
-            <option <% if (contact.contactStrength == "Warm") { %> selected <% } %> value="Warm">Warm</option>
-            <option <% if (contact.contactStrength == "Cold") { %> selected <% } %> value="Cold">Cold</option>
-        </select>
-    </div>
-    
-            <div class="button-group pull-right">
-                <div class="form-group">
-                    <button class="btn btn-xs btn-primary btn-block">Save</button>
-                </div>
-            </div>
+
                 <strong><p>Name: <div class="form-inline"><div class="form-group">
                     <input class="form-control" type="text" name ="contact[firstName]" value="<%=contact.firstName%>">
                 </div>
@@ -120,41 +164,35 @@
                     <input class="form-control" type="text" name ="contact[addressZip]" value="<%=contact.addressZip%>">
                 </div>
                 </div>
+                
+            <div class="button-group pull-right">
+                <div class="form-group">
+                    <button class="btn btn-xs btn-primary">Save</button>
+                </div>
+            </div>
         </div>
             </form>
-    <div class="col-lg-2">
-        <select class="form-control" name="contact[contactType]" value="<%=contact.contactType%>">
-            <option <% if (contact.contactType == "Lead") { %> selected <% } %> value="Lead">Lead</option>
-            <option <% if (contact.contactType == "Prospect") { %> selected <% } %> value="Prospect">Prospect</option>
-            <option <% if (contact.contactType == "Customer") { %> selected <% } %> value="Customer">Customer</option>
-            <option <% if (contact.contactType == "Custustomer-Cross Sell") { %> selected <% } %> value="Custustomer-Cross Sell">Custustomer-Cross Sell</option>
-            <option <% if (contact.contactType == "Customer - Winback") { %> selected <% } %> value="Customer - Winback">Customer - Winback</option>
-        </select>
-    </div>
             <a href="/contact/<%= contact._id %>">Go Back</a>
         </div>
-    </div>
-</div>
-</div>
-<div class="col-lg-2 otherinfo-sidebar cust-container">
-    <div class="row">
-        <div class="col-lg">
-            <h1>Other Info</h1>
-            <hr>
-            <p>Assigned To: <strong>Cory Evans</strong></p>
-            <p>Source:   <strong>Personal Contact</strong></p>
-            <p>Sub-Source:   <strong>Airsofting</strong></p>
-            <hr>
-            <p>Date Added:   <strong></strong></p>
-            <p>First Quoted:   <strong>Unquoted</strong></p>
-            <p>Date Sold: <strong>Unsold</strong></p>
-        </div>
-        <div class="panel-body">
-            <p>Referral Fee Section Goes Here</p>
+        <div class="col-lg otherinfo-sidebar cust-container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1>Other Info</h1>
+                    <hr>
+                    <p>Assigned To: <strong>Cory Evans</strong></p>
+                    <p>Source:   <strong>Personal Contact</strong></p>
+                    <p>Sub-Source:   <strong>Airsofting</strong></p>
+                    <hr>
+                    <p>Date Added:   <strong><%= contact.created.toDateString() %></strong></p>
+                    <p>First Quoted:   <strong>Unquoted</strong></p>
+                    <p>Date Sold: <strong>Unsold</strong></p>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
+
     
 
 <% include ../partials/footer %>

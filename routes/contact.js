@@ -30,11 +30,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var contactType = req.body.contactType;
     var created = req.body.created;
     var contactStrength = req.body.contactStrength;
+    var contactStatus = req.body.contactStatus;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength}
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, contactStatus: contactStatus}
     //Create a new contact and save to DB
     Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {
@@ -44,7 +45,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         } else {
             //redirect back to contact page
             req.flash("genInfo", "Contact Successfully Added!");
-            res.redirect("/contact");   
+            res.redirect("back"); 
+            res.redirect("back"); 
         }
     });
 });

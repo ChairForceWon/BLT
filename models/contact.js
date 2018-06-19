@@ -11,6 +11,7 @@ var contactSchema = new mongoose.Schema ({
       email: String,
       contactType: String,
       contactStrength: String,
+      contactStatus: String,
       created: {type: Date, default: Date.now},
    author: {
       id: {

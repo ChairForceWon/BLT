@@ -110,4 +110,16 @@ h1 {
 .comment-container {
     display: inline;
 }
+.hot {
+    background-color: #ffb3b3;
+}
+.warm {
+    background-color: #ffe0b3;
+}
+.cold {
+    background-color: #b3b3ff;
+}
+.table td {
+    padding: 0;
+}
 
