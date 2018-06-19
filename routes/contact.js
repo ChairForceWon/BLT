@@ -29,11 +29,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var email = req.body.email;
     var contactType = req.body.contactType;
     var created = req.body.created;
+    var contactStrength = req.body.contactStrength;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created}
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength}
     //Create a new contact and save to DB
     Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {
@@ -86,7 +87,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
             res.redirect("back");
              console.log(err);
        } else {
-           res.redirect("/contact/" + req.params.id);
+           res.redirect("back");
        }
    });
 });

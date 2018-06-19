@@ -1,77 +1,45 @@
-<!-- Modal -->
-<div class="ui basic modal" id="modal<%=contacts._id%>">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content container-fluid">
-      <div class="modal-header container-fluid">
-        <div class="row">
-            <div class="col-lg-9">
-              <h5 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h5>
-           </div> 
-            <div class="col-lg-3">
-            <h5 class="modal-title"><strong><%=contacts.phone%></strong></h5>
-           </div> 
-        </div>
-        
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-6">
-            <p>Current Scheduled Task: </p>
-          </div>
-          <div class="col-lg-6">
-            <p>Quote Apt - 11/12/18 @3:30pm </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 offset-lg-6">
-            <button type="button" class="btn btn-sm btn-success">Complete</button>
-            <button type="button" class="btn btn-sm btn-warning">Reschedule</button>
-          </div>
-        </div>
-        <div class="row">
-                <div class="col-lg">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="oppWheelsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <strong>Opportunities</strong>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="oppWheelsDropdown">
-                            <a class="dropdown-item" href="#">Home</a>
-                            <a class="dropdown-item" href="#">Auto</a>
-                            <a class="dropdown-item" href="#">Motorcycle</a>
-                            <a class="dropdown-item" href="#">Off Road Vehicle</a>
-                            <a class="dropdown-item" href="#">Mobile Home (RV's)</a>
-                            <a class="dropdown-item" href="#">Renters</a>
-                            <a class="dropdown-item" href="#">Condo</a>
-                            <a class="dropdown-item" href="#">Manufactored Home</a>
-                            <a class="dropdown-item" href="#">Landlords</a>
-                            <a class="dropdown-item" href="#">Boat</a>
-                            <a class="dropdown-item" href="#">Personal Umbrella Policy</a>
-                            <a class="dropdown-item" href="#">Life</a>
-                      </div>
-                    <p class="add-icon"><a href="#"><span><i class="fas fa-plus"></i></span></a> Add Another</p>
-                    </div>
-                </div>
+
+            
+
+    
+    <!-- Modal -->
+<div class="modal fade" id="modal<%=contacts._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="col-lg-8 offset-lg-2">
-              <button type="button" class="btn btn-sm btn-warning">Schedule Apt</button>
-              <button type="button" class="btn btn-sm btn-primary">Add To-Do</button>
-          </div>
-          
-          <div class="form-group">
+        <div class="modal-body">
+            <form action="/contact/<%= contacts._id %>/?_method=PUT" method="POST">   
+       
+        <div class="col-lg-4">
+            <select class="form-control" name="contact[contactStrength]" value="<%=contacts.contactStrength%>">
+                <option <% if (contacts.contactStrength == "Hot") { %> selected <% } %> value="Hot">Hot</option>
+                <option <% if (contacts.contactStrength == "Warm") { %> selected <% } %> value="Warm">Warm</option>
+                <option <% if (contacts.contactStrength == "Cold") { %> selected <% } %> value="Cold">Cold</option>
+            </select>
+        </div>
+            <div class="button-group pull-right">
+                <div class="form-group">
+                    <button class="btn btn-xs btn-primary btn-block">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            </div>
+        <div class="form-group">
             <form action="/contact/<%= contacts._id %>/comments" method="POST">
-                            <div class="form-group">
-                                <textarea class="form-control" type="text" name ="comment[text]" placeholder="text"></textarea>
-                                <button class="btn btn-sm btn-primary">Submit!</button>
-                            </div>
-                        </form>
+                <div class="form-group">
+                    <textarea class="form-control" type="text" name ="comment[text]" placeholder="text"></textarea>
+                    <button class="btn btn-sm btn-primary">Submit!</button>
+                </div>
+            </form>
           </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        </div>
+        </div>
     </div>
-  </div>
 </div>

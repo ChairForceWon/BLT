@@ -10,6 +10,7 @@ var contactSchema = new mongoose.Schema ({
       phone: String,
       email: String,
       contactType: String,
+      contactStrength: String,
       created: {type: Date, default: Date.now},
    author: {
       id: {

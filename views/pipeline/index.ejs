@@ -1,30 +1,45 @@
 <!--Leads Page that shows all contacts-->
 <% include ../partials/header %>
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <div class="col-lg-6" id="prospectPipeline">
-                <h2>Prospects (Quoted)</h2>
-                <table class="table">
-                    <tbody>
-                        <% contacts.forEach(function(contacts){ %>
-                            <% if (contacts.contactType == "Prospect") { %>
-                            <div class="container">
-                                <tr>
-                                    <button type="button" class="btn btn-primary pipeline-btn" data-toggle="modal" data-target="#modal<%=contacts._id%>">
-                                        <%=contacts.firstName%> <%=contacts.lastName%>
-                                    </button>
-                                      <% include ../pipeline/modal %>
-                                </tr>
-                            </div>
-                            <% }; %>
-                        <% }); %>
-                    </tbody>
-                </table>
-            </div> 
-        </div>
-        
-
-
+<div class="row">
+    <div class="col-lg-6" id="prospectPipeline">
+        <h2>Leads (Unquoted)</h2>
+        <table class="table">
+            <tbody>
+                <% contacts.forEach(function(contacts){ %>
+                    <% if (contacts.contactType == "Lead") { %>
+                    <div class="container">
+                        <tr>
+                            <button type="button" class="btn pipeline-btn" data-toggle="modal" data-target="#modal<%=contacts._id%>">
+                                <%=contacts.firstName%> <%=contacts.lastName%>
+                            </button>
+                              <% include ../pipeline/modal %>
+                        </tr>
+                    </div>
+                    <% }; %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div> 
+    <div class="col-lg-6" id="prospectPipeline">
+        <h2>Prospects (Quoted)</h2>
+        <table class="table">
+            <tbody>
+                <% contacts.forEach(function(contacts){ %>
+                    <% if (contacts.contactType == "Prospect") { %>
+                    <div class="container">
+                        <tr>
+                            <button type="button" class="btn pipeline-btn" data-toggle="modal" data-target="#modal<%=contacts._id%>">
+                                <%=contacts.firstName%> <%=contacts.lastName%>
+                            </button>
+                              <% include ../pipeline/modal %>
+                        </tr>
+                    </div>
+                    <% }; %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
 <script>
 $("#click<%=contacts._id%>").on("click",function(){
          $('#modal<%=contacts._id%>').modal("show");
