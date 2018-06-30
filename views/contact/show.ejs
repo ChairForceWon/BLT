@@ -182,7 +182,7 @@
                                     <tr>
                                         <td>
                                             <p><%= comment.text %></p>
-                                            <span><em><%= comment.created.toDateString() %> <%= comment.created.toLocaleTimeString("en-US") %> - <%= comment.author.username %></em></span>
+                                            <span><em><%= comment.created.toDateString() %> <%= comment.created.toLocaleTimeString() %> - <%= comment.author.username %></em></span>
                                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
                                             <form id="delete-comment" action="/contact/<%= contacts._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                                                  <button class="btn btn-danger btn-sm" type="submit" value="Delete">x</i></button>

@@ -34,8 +34,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var author = {
         id: req.user._id,
         username: req.user.username
-    }
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, contactStatus: contactStatus}
+    };
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, contactStatus: contactStatus};
     //Create a new contact and save to DB
     Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {
@@ -45,14 +45,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         } else {
             //redirect back to contact page
             req.flash("genInfo", "Contact Successfully Added!");
-            res.redirect("back"); 
-            res.redirect("back"); 
+            res.redirect("back");
         }
     });
 });
 
 //NEW - Show form to add new contact to DB 
-router.get("/new", middleware.isLoggedIn, function(res, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
    res.render("contact/new");
 });
 
@@ -103,7 +102,7 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
              console.log(err);
        } else {
            req.flash("error", "Contact Deleted");
-           res.redirect("/contact")
+           res.redirect("/contact");
        }
    }); 
 });

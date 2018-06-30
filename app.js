@@ -8,9 +8,7 @@ var express                 = require("express"),
     LocalStrategy           = require("passport-local"),
     passportLocalMongoose   = require("passport-local-mongoose"),
     User                    = require("./models/user"),
-    Contact                 = require("./models/contact"),
-    middleware              = require("./middleware"),
-    Comment                 = require("./models/comment");
+    middleware              = require("./middleware");
     
     
 //Requiring Routes
