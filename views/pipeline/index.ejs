@@ -3,9 +3,20 @@
 <div class="container-fluid">
     <a class="btn btn-primary" href="/contact/new">Add new contact</a>
     <div class="row">
-        <div class="col-lg-4" id="prospectPipeline">
-            <h2>Leads (Unquoted)</h2>
-                <table class="table table-hover small-rows">
+        <div class="col-lg-6" id="prospectPipeline">
+            <div class="panel">
+                <h2>Leads (Unquoted)</h2>
+                    <div class="row">
+                        <div class= "col-sm-4" id= "leadFollowUp">
+                            <p>New/Requote</p>
+                        </div>
+                        <div class= "col-sm-4" id= "leadFollowUp">
+                            <p>Lead Follow Up</p>
+                        </div>
+                        <div class= "col-sm-4" id= "leadFollowUp">
+                            <p>Quote Scheduled</p>
+                        </div>    
+                    <table class="table table-hover small-rows">
                 <% contacts.forEach(function(contacts){ %>
                     <% if (contacts.contactType == "Lead" && contacts.contactStrength == "Hot") { %>
                         <tr>
@@ -29,13 +40,25 @@
                         </tr>
                         <% include ../pipeline/modal %>
                         <% include ../pipeline/modal %>
-                     <% }; %>
-                <% }); %>
-                </table>
+                         <% }; %>
+                        <% }); %>
+                    </table>
+                    </div>
+            </div>
         </div>
-        
-        <div class="col-lg" id="prospectPipeline">
+        <div class="col-lg-6" id="prospectPipeline">
             <h2>Prospects (Quoted)</h2>
+                <div class = "panel">   
+                    <div class="row">
+                        <div class= "col-lg-4" id= "prospectFollowUp">
+                            <p>Prospect Follow Up</p>
+                        </div>
+                        <div class= "col-lg-4" id= "prospectFollowUp">
+                            <p>Schedule Sale</p>
+                        </div>
+                        <div class= "col-lg-4" id= "prospectFollowUp">
+                            <p>Customers</p>
+                        </div>
                 <table class="table table-hover small-rows">
                 <% contacts.forEach(function(contacts){ %>
                     <% if (contacts.contactType == "Prospect" && contacts.contactStrength == "Hot") { %>
@@ -63,9 +86,10 @@
                      <% }; %>
                 <% }); %>
                 </table>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
+    </div>    
 </div>
 <script>
     contacts.forEach(function(contacts){

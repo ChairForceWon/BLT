@@ -38,7 +38,7 @@ body{
     color: white;
     line-height: 1.42857143;
     box-sizing: border-box;
-    padding-top:30px;
+    padding-top:20px;
     padding:25px;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
@@ -46,19 +46,31 @@ body{
 #dailygoals{
     font-family: "Open Sans", sans-serif;
     font-size:16px;
-    padding: 25px;
+    padding: 15px;
     box-sizing: border-box;
 }
 #leadPipeline{
     background-color: white;
     border: 5px solid #bababa;
+    text-align: center;
+    margin:none auto;
 }
+
 
 #prospectPipeline{
     background-color: white;
     border: 5px solid #bababa;
+    text-align: center;
+    margin:none auto;
 }
-
+#prospectFollowUp{
+    border: 2px solid gray;
+    text-decoration: underline;
+}
+#leadFollowUp{
+    border: 2px solid gray;
+    text-decoration: underline;
+}
 .pipeline-btn {
     margin: 2px;
     width: 150px;
@@ -122,4 +134,3 @@ h1 {
 .table td {
     padding: 0;
 }
-

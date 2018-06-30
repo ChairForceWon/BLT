@@ -1,13 +1,26 @@
 <!--Leads Page that shows all contacts-->
 <% include ../partials/header %>
-    <h1>List of available Contacts</h1>
+    <h1>List of Available Contacts</h1>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     
-    <div class="col-md-1">
-        <a class="btn btn-primary" href="/contact/new">Add new contact</a>
+    <div class="row">
+        <div class="col-lg-2">
+            <a class="btn btn-primary" href="/contact/new">Add new contact</a>
+        </div>
+            <div class="col-6">
+                <div class="input-group">
+                    <input class="contactSearch" type="search" value="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                
+                </div>
+            </div>
     </div>
     <div class="jumbotron col-md-10">
         <table class="table">

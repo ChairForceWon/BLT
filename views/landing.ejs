@@ -1,48 +1,93 @@
 <!--Dashboard Page that will be the landing page-->
 <% include ./partials/header %>
-<h1>Dashboard</h1>
-<div class="container">
-    <row>
-        <div class="col-lg-6" id="dailygoals">
-            <h3>Hi, Cory! Here is your agency's goal for today</h3>
-                <p>Started today at</p>
-                <p>$14,922</p>
-        </div>
-        <div class="col-lg-6" id="trending">
+<div class="container-fluid">
+    <h1>Dashboard</h1>
+        <div class="row">
+            <div class="col-lg-6" id="dailygoals">
+                <h3>Hi, Cory! Here is your agency's goal for today</h3>
+                
+            </div>
+            <div class="col-lg-6" id="trending">
                 <p>Trending for</p>
                 <p>$52,227</p><!--Will need math to populate this amount to change as sales happen-->
                 <p>Premium</p>
+            </div>
         </div>
-    </row>
-        <div class="col-md-3" id="month">
-            <p>June Premium</p> <!-- formula to change each month-->
-            <p>$14,922</p> <!--Should have formula to populate this number-->
-            <p>Goal: $77,750 ($-62,828)</p> <!--Should have formula to populate these numbers-->
+        <div class="row">
+            <div class="col-md-3">
+                <h3>Started today at</h3>
+            </div>
+            <div class="col-md-3">
+                <h3>$14,922</h3> 
+            </div>
+            <div class="col-md-3" id="month">
+                <p>June Premium</p> <!-- formula to change each month-->
+                <p>$14,922</p> <!--Should have formula to populate this number-->
+                <p>Goal: $77,750 ($-62,828)</p> <!--Should have formula to populate these numbers-->
+            </div>
+            <div class="col-md-3" id="month">
+                <p>June Items</p> <!-- formula to change each month-->
+                <p>42</p> <!--Should have formula to populate this number-->
+                <p>Goal: 175 (-133)</p> <!--Should have formula to populate these numbers-->
+            </div>
         </div>
-        <div class="col-md-3" id="month">
-            <p>June Items</p> <!-- formula to change each month-->
-            <p>42</p> <!--Should have formula to populate this number-->
-            <p>Goal: 175 (-133)</p> <!--Should have formula to populate these numbers-->
-        </div>
-    </row>
 </div>    
-    <row>
-        <div class="container">
-            <div class="col-lg-12">
-                <p> Written Business        MTD      All location/agents     All Carriers</p>
-                <!--drop down buttons here-->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Written Business
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </div>
         </div>
-    </row>
-<div class="container">    
-    <row>
-        <div class="col-lg-12">
-            <div class="thumbnail">
-                <img src="http://www.reviewon.com/wp-content/uploads/2011/01/google-trends-marketing.jpg">
+        <div class="col-lg-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    MTD
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All locations/agents
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+            </div>
+        </div> 
+        <div class="col-lg-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All Carriers
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="row">    
+        <div class="col-lg-12">
+            
             <!--This will show the graph of sales by agent or angent's personal numbers-->
         </div>
-    </row>
 </div>
 <% include ./partials/footer %>
 
