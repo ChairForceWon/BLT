@@ -1,79 +1,74 @@
 
             
 
-    
+
     <!-- Modal -->
 <div class="modal fade" id="modal<%=contacts._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="row m-auto">
+                    <div class="col-lg">
+                        <h3 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h3>
+                    </div>
+                </div>
+                    <div class="row">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
             </div>
         <div class="modal-body">
-            <form action="/contact/<%= contacts._id %>/?_method=PUT" method="POST">   
-       
-        <div class="row">
-                <div class="col-lg-2">
-                    <p> Type:   
+            <div class="container-fluid">
+                <form action="/contact/<%= contacts._id %>/?_method=PUT" method="POST">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <strong><p><%=contacts.phone%></p></strong>
+                    </div>
+                    <div class="col-md-auto">
+                        <strong><p><%=contacts.email%></p></strong>
+                    </div>
                 </div>
-                <div class="col-lg-6 offset-lg-2">
-                    <select class="form-control" name="contact[contactType]" value="<%=contacts.contactType%>">
-                        <option <% if (contacts.contactType == "Lead") { %> selected <% } %> value="Lead">Lead</option>
-                        <option <% if (contacts.contactType == "Prospect") { %> selected <% } %> value="Prospect">Prospect</option>
-                        <option <% if (contacts.contactType == "Customer") { %> selected <% } %> value="Customer">Customer</option>
-                        <option <% if (contacts.contactType == "Custustomer-Cross Sell") { %> selected <% } %> value="Custustomer-Cross Sell">Custustomer-Cross Sell</option>
-                        <option <% if (contacts.contactType == "Customer - Winback") { %> selected <% } %> value="Customer - Winback">Customer - Winback</option>
-                    </select>
-                    </p>
+                <div class="row">
+                    <div class="col-lg">
+                        <strong><p>Current Task: </strong><em><select class="form-control" name="contact[currentTask]" value="<%=contacts.currentTask%>">
+                            <option <% if (contacts.currentTask == "New Lead, Unquoted") { %> selected <% } %> value="New Lead, Unquoted">New Lead, Unquoted</option>
+                            <option <% if (contacts.currentTask == "Quoted") { %> selected <% } %> value="Quoted">Quoted</option>
+                        </select></em></p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <p> Status:   
+                <div class="row">
+                    <div class="col-lg">
+                        <button type="button" 
+                        <% if (contacts.currentTask == "New Lead, Unquoted") { %>
+                            class="btn btn-secondary btn-quoted" >Not Quoted
+                        <% } else if (contacts.currentTask == "Quoted") { %>
+                             class="btn btn-success active" >Quoted
+                        <% } %>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-lg-6 offset-lg-2">
-                        <select class="form-control" name="contact[contactStatus]" value="<%=contacts.contactStatus%>">
-                            <option <% if (contacts.contactStatus == "New Lead") { %> selected <% } %> value="New Lead">New Lead</option>
-                            <option <% if (contacts.contactStatus == "Attempted Quote") { %> selected <% } %> value="Attempted Quote">Attempted Quote</option>
-                            <option <% if (contacts.contactStatus == "Quoted") { %> selected <% } %> value="Quoted">Quoted</option>
-                        </select>
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <p> Strength:   
-                </div>
-                <div class="col-lg-6 offset-lg-2">
-                    <select class="form-control" name="contact[contactStrength]" value="<%=contacts.contactStrength%>">
-                        <option <% if (contacts.contactStrength == "Hot") { %> selected <% } %> value="Hot">Hot</option>
-                        <option <% if (contacts.contactStrength == "Warm") { %> selected <% } %> value="Warm">Warm</option>
-                        <option <% if (contacts.contactStrength == "Cold") { %> selected <% } %> value="Cold">Cold</option>
-                    </select>
-                    </p>
-                </div>
-            </div>
+           
             <div class="button-group pull-right">
                 <div class="form-group">
-                    <button class="btn btn-xs btn-primary btn-block">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-xs btn-primary">Save</button>
                 </div>
-            </form>
+            </div>
+                </form>
+            </div>
         </div>
+
         <div class="modal-footer">
             </div>
-        <div class="form-group">
-            <form action="/contact/<%= contacts._id %>/comments" method="POST">
-                <div class="form-group">
-                    <textarea class="form-control" type="text" name ="comment[text]" placeholder="text"></textarea>
-                    <button class="btn btn-sm btn-primary">Submit!</button>
-                </div>
-            </form>
-          </div>
-        </div>
         </div>
     </div>
 </div>
+
+<script>
+    $('button').click(function(){
+    $(this).text(function(i,old){
+        return old=='Quoted' ?  'Un-Quoted' : 'Quoted';
+    });
+});
+</script>
+

@@ -31,11 +31,14 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var created = req.body.created;
     var contactStrength = req.body.contactStrength;
     var contactStatus = req.body.contactStatus;
+    var currentTask = req.body.currentTask;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
-    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, contactStatus: contactStatus};
+    var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState,
+    addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, 
+    contactStatus: contactStatus, currentTask: currentTask};
     //Create a new contact and save to DB
     Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {

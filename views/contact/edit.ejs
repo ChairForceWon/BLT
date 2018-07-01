@@ -16,7 +16,7 @@
                     <p> Type:   
                 </div>
                 <div class="col-lg-6 offset-lg-2">
-                    <select class="form-control" name="contacts[contactType]" value="<%=contact.contactType%>">
+                    <select class="form-control" name="contact[contactType]" value="<%=contact.contactType%>">
                         <option <% if (contact.contactType == "Lead") { %> selected <% } %> value="Lead">Lead</option>
                         <option <% if (contact.contactType == "Prospect") { %> selected <% } %> value="Prospect">Prospect</option>
                         <option <% if (contact.contactType == "Customer") { %> selected <% } %> value="Customer">Customer</option>
@@ -31,7 +31,7 @@
                     <p> Status:   
                 </div>
                 <div class="col-lg-6 offset-lg-2">
-                        <select class="form-control" name="contacts[contactStatus]" value="<%=contact.contactStatus%>">
+                        <select class="form-control" name="contact[contactStatus]" value="<%=contact.contactStatus%>">
                             <option <% if (contact.contactStatus == "New Lead") { %> selected <% } %> value="New Lead">New Lead</option>
                             <option <% if (contact.contactStatus == "Attempted Quote") { %> selected <% } %> value="Attempted Quote">Attempted Quote</option>
                             <option <% if (contact.contactStatus == "Quoted") { %> selected <% } %> value="Quoted">Quoted</option>
@@ -44,7 +44,7 @@
                     <p> Strength:   
                 </div>
                 <div class="col-lg-6 offset-lg-2">
-                    <select class="form-control" name="contacts[contactStrength]" value="<%=contact.contactStrength%>">
+                    <select class="form-control" name="contact[contactStrength]" value="<%=contact.contactStrength%>">
                         <option <% if (contact.contactStrength == "Hot") { %> selected <% } %> value="Hot">Hot</option>
                         <option <% if (contact.contactStrength == "Warm") { %> selected <% } %> value="Warm">Warm</option>
                         <option <% if (contact.contactStrength == "Cold") { %> selected <% } %> value="Cold">Cold</option>

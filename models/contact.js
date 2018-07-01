@@ -12,6 +12,7 @@ var contactSchema = new mongoose.Schema ({
       contactType: String,
       contactStrength: String,
       contactStatus: String,
+      currentTask: String,
       created: {type: Date, default: Date.now},
    author: {
       id: {
