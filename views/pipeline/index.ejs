@@ -1,7 +1,7 @@
 <!--Leads Page that shows all contacts-->
 <% include ../partials/header %>
 <div class="container-fluid">
-    <a class="btn btn-primary" href="/contact/new">Add new contact</a>
+    <a class="btn btn-primary" href="#" data-toggle="modal" data-backdrop="static" data-target="#newContactModal" >Add new contact</a>
     <div class="row">
         <div class="col-lg-6" id="prospectPipeline">
             <div class="panel">
@@ -9,94 +9,109 @@
                     <div class="row">
                         <div class= "col-sm-4" id= "leadFollowUp">
                             <p>New/Requote</p>
+                            <table class="table table-hover small-rows">
+                                <% contacts.forEach(function(contacts){ %>
+                                    <% if (contacts.contactType == "Lead" && contacts.contactStatus == "New") { %>
+                                        <tr>
+                                            <td>
+                                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                            </td>
+                                        </tr>
+                                <% include ../pipeline/modal %>
+                                 <% }; %>
+                                <% }); %>
+                            </table>
                         </div>
                         <div class= "col-sm-4" id= "leadFollowUp">
                             <p>Lead Follow Up</p>
+                                <table class="table table-hover small-rows">
+                                    <% contacts.forEach(function(contacts){ %>
+                                        <% if (contacts.contactType == "Lead" && contacts.contactStatus == "Lead Follow Up") { %>
+                                            <tr>
+                                                <td>
+                                                    <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                                </td>
+                                            </tr>
+                                    <% include ../pipeline/modal %>
+                                    <% }; %>
+                                <% }); %>
+                            </table>
                         </div>
                         <div class= "col-sm-4" id= "leadFollowUp">
                             <p>Quote Scheduled</p>
+                                <table class="table table-hover small-rows">
+                                    <% contacts.forEach(function(contacts){ %>
+                                        <% if (contacts.contactType == "Lead" && contacts.contactStatus == "Lead Follow Up") { %>
+                                            <tr>
+                                                <td>
+                                                    <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                                </td>
+                                            </tr>
+                                    <% include ../pipeline/modal %>
+                                    <% }; %>
+                                <% }); %>
+                            </table>                            
                         </div>    
-                    <table class="table table-hover small-rows">
-                <% contacts.forEach(function(contacts){ %>
-                    <% if (contacts.contactType == "Lead" && contacts.contactStrength == "Hot") { %>
-                        <tr>
-                            <td class="hot">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                    <% } if (contacts.contactType == "Lead" && contacts.contactStrength == "Warm") { %>
-                        <tr>
-                            <td class="warm">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                        <% } if (contacts.contactType == "Lead" && contacts.contactStrength == "Cold") { %>
-                        <tr>
-                            <td class="cold">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                        <% include ../pipeline/modal %>
-                         <% }; %>
-                        <% }); %>
-                    </table>
                     </div>
             </div>
         </div>
         <div class="col-lg-6" id="prospectPipeline">
-            <h2>Prospects (Quoted)</h2>
-                <div class = "panel">   
+            <div class="panel">
+                <h2>Prospects (Quoted)</h2>
                     <div class="row">
-                        <div class= "col-lg-4" id= "prospectFollowUp">
+                        <div class= "col-sm-4" id= "prospectFollowUp">
                             <p>Prospect Follow Up</p>
+                            <table class="table table-hover small-rows">
+                                <% contacts.forEach(function(contacts){ %>
+                                    <% if (contacts.contactType == "Prospect" && contacts.contactStatus == "Prospect Follow Up") { %>
+                                        <tr>
+                                            <td>
+                                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                            </td>
+                                        </tr>
+                                <% include ../pipeline/modal %>
+                                 <% }; %>
+                                <% }); %>
+                            </table>
                         </div>
-                        <div class= "col-lg-4" id= "prospectFollowUp">
-                            <p>Schedule Sale</p>
+                        <div class= "col-sm-4" id= "prospectFollowUp">
+                            <p>Sale Scheduled</p>
+                                <table class="table table-hover small-rows">
+                                    <% contacts.forEach(function(contacts){ %>
+                                        <% if (contacts.contactType == "Prospect" && contacts.contactStatus == "Sale Scheduled") { %>
+                                            <tr>
+                                                <td>
+                                                    <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                                </td>
+                                            </tr>
+                                    <% include ../pipeline/modal %>
+                                    <% }; %>
+                                <% }); %>
+                            </table>
                         </div>
-                        <div class= "col-lg-4" id= "prospectFollowUp">
-                            <p>Customers</p>
-                        </div>
-                <table class="table table-hover small-rows">
-                <% contacts.forEach(function(contacts){ %>
-                    <% if (contacts.contactType == "Prospect" && contacts.contactStrength == "Hot") { %>
-                        <tr>
-                            <td class="hot">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                    <% } if (contacts.contactType == "Prospect" && contacts.contactStrength == "Warm") { %>
-                        <tr>
-                            <td class="warm">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                        <% } if (contacts.contactType == "Prospect" && contacts.contactStrength == "Cold") { %>
-                        <tr>
-                            <td class="cold">
-                                <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
-                            </td>
-                        </tr>
-                        <% include ../pipeline/modal %>
-                        <% include ../pipeline/modal %>
-                     <% }; %>
-                <% }); %>
-                </table>
-                </div>
+                        <div class= "col-sm-4" id= "prospectFollowUp">
+                            <p>Todays Sales</p>
+                                <table class="table table-hover small-rows">
+                                    <% contacts.forEach(function(contacts){ %>
+                                        <% if (contacts.contactType == "Customer" && contacts.contactStatus == "Sold Today") { %>
+                                            <tr>
+                                                <td>
+                                                    <strong><%= contacts.contactStrength%> - <a href="#" data-toggle="modal" data-backdrop="static" data-target="#modal<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong>
+                                                </td>
+                                            </tr>
+                                    <% include ../pipeline/modal %>
+                                    <% }; %>
+                                <% }); %>
+                            </table>                            
+                        </div>    
+                    </div>
             </div>
         </div>
-    </div>    
+    </div> 
+
 </div>
 
-    
-<script>
-$("#click<%=contacts._id%>").on("click",function(){
-         $('#modal<%=contacts._id%>').modal("show");
-  });
-</script>
 
+
+<% include ../contact/newModal %>
 <% include ../partials/footer %>

@@ -6,49 +6,63 @@
 <div class="modal fade" id="modal<%=contacts._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <div class="row m-auto">
-                    <div class="col-lg">
-                        <h3 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h3>
-                    </div>
-                </div>
-                    <div class="row">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-            </div>
+      <div class="modal-header">
+            <h4 class="modal-title"><strong><a href="/contact/<%=contacts._id%>"><%=contacts.firstName%> <%=contacts.lastName%></a></strong></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
         <div class="modal-body">
             <div class="container-fluid">
                 <form action="/contact/<%= contacts._id %>/?_method=PUT" method="POST">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <strong><p><%=contacts.phone%></p></strong>
-                    </div>
-                    <div class="col-md-auto">
-                        <strong><p><%=contacts.email%></p></strong>
-                    </div>
+            <div class="row">
+                <div class="col-lg">
+                    <strong><span> Type:</strong></span>
+                    <p><%=contacts.contactType%></p>
                 </div>
+                <div class="col-lg">
+                    <strong><span> Status:</strong></span>
+                    <p><%=contacts.contactStatus%></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    <strong><span> Phone:</strong></span>
+                    <p><%=contacts.phone%></p>
+                </div>
+                <div class="col-lg">
+                    <strong><span> Email:</strong></span>
+                    <p><%=contacts.email%></p>
+                </div>
+            </div>
                 <div class="row">
                     <div class="col-lg">
-                        <strong><p>Current Task: </strong><em><select class="form-control" name="contact[currentTask]" value="<%=contacts.currentTask%>">
-                            <option <% if (contacts.currentTask == "New Lead, Unquoted") { %> selected <% } %> value="New Lead, Unquoted">New Lead, Unquoted</option>
-                            <option <% if (contacts.currentTask == "Quoted") { %> selected <% } %> value="Quoted">Quoted</option>
-                        </select></em></p>
+                        <div class="form-group">
+                            <input id="quoteData" class="form-control" type="text" name ="contact[quoted]" value="<%=contacts.quoted%>"hidden readonly>
+                            <input <% if (contacts.quoted == "Quoted") { %> 
+                            class="btn btn-sm btn-success" 
+                            <% } else if (contacts.quoted == "Not Quoted") { %>
+                            class="btn btn-sm btn-secondary"
+                            <% } %>
+                            onclick="changeQuoteStatus()" id="quoteBtn" type="button" value="Quoted?">
+                        </div>
                     </div>
+                    <div class="col-lg">
+                        <div class="form-group">
+                            <input id="soldData" class="form-control" type="text" name ="contact[sold]" value="<%=contacts.sold%>"hidden readonly>
+                            <input <% if (contacts.sold == "Sold") { %> 
+                            class="btn btn-sm btn-success" 
+                            <% } else if (contacts.sold == "Not Sold") { %>
+                            class="btn btn-sm btn-secondary"
+                            <% } %>
+                            onclick="changeSoldStatus()" id="soldBtn" type="button" value="Sold?">
+                        </div>
+                    </div>
+                    <input id="typeInput" class="form-control" type="text" name ="contact[contactType]" value="<%=contacts.contactType%>"hidden readonly>
+                    <input id="statusInput" class="form-control" type="text" name ="contact[contactStatus]" value="<%=contacts.contactStatus%>"hidden readonly>
                 </div>
                 <div class="row">
-                    <div class="col-lg">
-                        <button type="button" 
-                        <% if (contacts.currentTask == "New Lead, Unquoted") { %>
-                            class="btn btn-secondary btn-quoted" >Not Quoted
-                        <% } else if (contacts.currentTask == "Quoted") { %>
-                             class="btn btn-success active" >Quoted
-                        <% } %>
-                        </button>
-                    </div>
                 </div>
-           
             <div class="button-group pull-right">
                 <div class="form-group">
                     <button class="btn btn-xs btn-primary">Save</button>
@@ -59,16 +73,50 @@
         </div>
 
         <div class="modal-footer">
+            <div class="col-lg">
             </div>
+        </div>
         </div>
     </div>
 </div>
 
 <script>
-    $('button').click(function(){
-    $(this).text(function(i,old){
-        return old=='Quoted' ?  'Un-Quoted' : 'Quoted';
-    });
-});
+var quoteData = document.getElementById("quoteData");
+var quoteBtn = document.getElementById("quoteBtn");
+var contactType  = document.getElementById("typeInput");
+var statusInput = document.getElementById("statusInput");
+    function changeQuoteStatus() {
+            if (quoteData.value == "Quoted") {
+                 quoteData.value = "Not Quoted";
+                 quoteBtn.classList.remove("btn-success");
+                 quoteBtn.classList.add("btn-secondary");
+                 contactType.value = "Lead";
+                 statusInput.value = "New";
+                 
+            } else if (quoteData.value == "Not Quoted") {
+                quoteData.value = "Quoted";
+                quoteBtn.classList.remove("btn-secondary");
+                quoteBtn.classList.add("btn-success");
+                contactType.value = "Prospect";
+                statusInput.value = "Prospect Follow Up";
+            }
+}
 </script>
+<script>
+var soldData = document.getElementById("soldData");
+var soldBtn = document.getElementById("soldBtn");
+    function changeSoldStatus() {
+            if (soldData.value == "Sold") {
+                 soldData.value = "Not Sold";
+                 soldBtn.classList.remove("btn-success");
+                 soldBtn.classList.add("btn-secondary");
+                 
+            } else if (soldData.value == "Not Sold") {
+                soldData.value = "Sold";
+                soldBtn.classList.remove("btn-secondary");
+                soldBtn.classList.add("btn-success");
+            }
+}
+</script>
+
 

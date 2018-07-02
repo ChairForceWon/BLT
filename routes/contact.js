@@ -32,13 +32,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var contactStrength = req.body.contactStrength;
     var contactStatus = req.body.contactStatus;
     var currentTask = req.body.currentTask;
+    var quoted = req.body.quoted;
+    var sold = req.body.sold;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
     var newcontact = {firstName: firstName, lastName: lastName, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState,
     addressZip: addressZip, phone: phone, email: email, contactType: contactType, author: author, created: created, contactStrength: contactStrength, 
-    contactStatus: contactStatus, currentTask: currentTask};
+    contactStatus: contactStatus, currentTask: currentTask, quoted: quoted, sold: sold};
     //Create a new contact and save to DB
     Contact.create(newcontact,  function(err, newlyCreated){
         if(err) {
@@ -105,7 +107,7 @@ router.delete("/:id", middleware.isLoggedIn, function(req, res){
              console.log(err);
        } else {
            req.flash("error", "Contact Deleted");
-           res.redirect("/contact");
+           res.redirect("back");
        }
    }); 
 });

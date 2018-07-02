@@ -134,3 +134,9 @@ h1 {
 .table td {
     padding: 0;
 }
+.btn btn-xs btn-primary {
+    background-color: red;
+}
+#more-info {
+    display: none;
+}

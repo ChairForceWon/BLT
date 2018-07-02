@@ -3,7 +3,7 @@
     <h1>List of available Contacts</h1>
 
     <div class="col-md-1">
-        <a class="btn btn-primary" href="/contact/new">Add new contact</a>
+        <a class="btn btn-primary" href="#" data-toggle="modal" data-backdrop="static" data-target="#newContactModal" >Add new contact</a>
     </div>
     <div class="jumbotron col-md-10">
     <tbody>
@@ -18,4 +18,5 @@
         <% }); %>
     </tbody>
     </div>
+    <% include ../contact/newModal %>
 <% include ../partials/footer %>
